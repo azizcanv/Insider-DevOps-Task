@@ -1,0 +1,6 @@
+.pytest_cache
+assets
+report.html
+helper/__pycache__
+pages/__pycache__
+tests/__pycache__
