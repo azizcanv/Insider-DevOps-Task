@@ -27,16 +27,14 @@ def run_tests(node_count):
     # Docker konteynerlerini başlat
     subprocess.run(["docker-compose", "up", "-d", "--scale", f"selenium-node-chrome={node_count}"])
     
+    # Çalışan ve duran tüm konteynerleri listeler
     subprocess.run(["docker", "ps", "-a"])
-    
-    # Selenium konteynerinde testleri çalıştır ve rapor oluştur
-    subprocess.run(["docker-compose", "exec", "selenium-tests", "sh", "-c", "python -m pytest --html=/app/report.html"])
+
+    # Selenium konteynerini başlatıp testleri çalıştır
+    subprocess.run(["docker-compose", "exec", "selenium-tests", "python", "-m", "pytest", "--html=report.html"])
 
     # Docker konteynerlerini kapat
     subprocess.run(["docker-compose", "down"])
-
-    # Oluşturulan raporu dışarı aktar
-    subprocess.run(["docker", "cp", "selenium-tests:/app/report.html", "./report.html"])
 
 if __name__ == "__main__":
     # Düğüm sayısını belirle
