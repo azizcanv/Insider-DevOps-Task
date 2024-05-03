@@ -30,13 +30,13 @@ def run_tests(node_count):
     subprocess.run(["docker", "ps", "-a"])
     
     # Selenium konteynerinde testleri çalıştır ve rapor oluştur
-    subprocess.run(["docker-compose", "exec", "jenkinstask", "sh", "-c", "python -m pytest --html=/app/report.html"])
+    subprocess.run(["docker-compose", "exec", "selenium-tests", "sh", "-c", "python -m pytest --html=/app/report.html"])
 
     # Docker konteynerlerini kapat
     subprocess.run(["docker-compose", "down"])
 
     # Oluşturulan raporu dışarı aktar
-    subprocess.run(["docker", "cp", "jenkinstask:/app/report.html", "./report.html"])
+    subprocess.run(["docker", "cp", "selenium-tests:/app/report.html", "./report.html"])
 
 if __name__ == "__main__":
     # Düğüm sayısını belirle
