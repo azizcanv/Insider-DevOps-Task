@@ -30,10 +30,10 @@ https://github.com/azizcanv/Insider-DevOps-Task.git
 
 ## For Local Run
 1. Run `pip install -r requirements.txt` to install environments if it does not exist.
-2. Run `python -m pytest --html=report.html` to test.
+2. Run `python -m pytest --html=report.html` or `python3 -m pytest --html=report.html`  to test.
 After the runing test you can check *report.html* file for the report
 
 ## For Local Docker Run
 1. Run `pip install -r requirements.txt` to install environments if it does not exist.
-2. Run `python run_tests.py` to test.
+2. Run `python run_tests.py` or `python3 run_tests.py` to test.
 After the runing test you can check *report.html* file for the report

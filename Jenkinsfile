@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'BUILD_NAME', description: 'Name for the build')
-        choice(name: 'NODE_COUNT', choices: ['1', '2', '3', '4', '5'], description: 'Number of nodes', defaultValue: '1')
+        choice(name: 'NODE_COUNT', choices: ['1', '2', '3', '4', '5'], description: 'Number of nodes')
     }
 
     environment {
@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'python run_tests.py' // run_tests.py scriptini çalıştır
+                    sh 'python run_tests.py' // run_tests.py scriptini çalıştırır python3 run_tests.py olarak da çalışabilir
                 }
             }
         }
@@ -48,5 +48,5 @@ pipeline {
     }
 
     // Build name
-    displayName("${params.BUILD_NAME}")
+    displayName "${params.BUILD_NAME}"
 }
