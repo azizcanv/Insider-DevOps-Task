@@ -9,7 +9,7 @@ def run_tests(node_count):
     subprocess.run(["docker-compose", "up", "-d", "--scale", f"selenium-node-chrome={node_count}"])
     
     # Testleri çalıştır
-    subprocess.run(["docker-compose", "exec", "selenium-tests", "python", "-m", "pytest", "--html=report.html"])
+    subprocess.run(["python", "-m", "pytest", "--html=report.html"])
 
     # Docker konteynerlerini kapat
     subprocess.run(["docker-compose", "down"])
