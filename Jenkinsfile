@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'BUILD_NAME', description: 'Name for the build')
+        choice(name: 'NODE_COUNT', choices: ['1', '2', '3', '4', '5'], description: 'Number of nodes', defaultValue: '1')
+    }
+
     environment {
         HOME_DIR = sh(script: 'echo $HOME', returnStdout: true).trim()
     }
@@ -37,4 +42,11 @@ pipeline {
             cleanWs()
         }
     }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+
+    // Build name
+    displayName("${params.BUILD_NAME}")
 }

@@ -1,5 +1,6 @@
 import subprocess
 import time
+import sys
 
 def check_grid_health():
     """
@@ -34,7 +35,7 @@ def run_tests(node_count):
 
 if __name__ == "__main__":
     # Düğüm sayısını belirle
-    node_count = 2  # İstediğiniz düğüm sayısını buradan ayarlayabilirsiniz
+    node_count = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 
     # Testleri belirtilen düğüm sayısıyla çalıştır
     run_tests(node_count)
