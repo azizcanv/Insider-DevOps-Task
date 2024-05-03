@@ -30,7 +30,7 @@ def run_tests(node_count):
     subprocess.run(["docker", "ps", "-a"])
 
     # Selenium konteynerini başlatıp testleri çalıştır
-    subprocess.run(["docker-compose", "exec", "selenium-tests", "python", "-m", "pytest", "--html=report.html"])
+    subprocess.run(["docker-compose", "exec", "jenkinstask-selenium-tests", "python", "-m", "pytest", "--html=report.html"])
 
     # Docker konteynerlerini kapat
     subprocess.run(["docker-compose", "down"])
